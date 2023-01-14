@@ -59,3 +59,12 @@ Padrão de criação de uma classe com construtor em Python:
             self.parm1 = parm1
             self.parm2 = parm2
             self.parm3 = parm3
+
+O Flask dispõe de um helper chamado request para tratar dados da requisição.
+Ele precisa ser importado da biblioteca para ser usado (não é um objeto 
+fornecido para o método, como no Django).
+
+A lista de jogos foi removida do método início, e foi passada para um 
+escopo global.
+
+O método POST não é permitido no Flask por padrão. Como resolver?
