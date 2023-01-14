@@ -90,3 +90,5 @@ Isso impede aquela mensagem perguntando se você deseja repetir a postagem.
 
 Assim como o request, o objeto redirect é um objeto que pode ser importado da
 biblioteca Flask.
+
+No Flask, arquivos estáticos são guardados na pasta ./static.
