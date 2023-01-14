@@ -1,0 +1,24 @@
+A variável __name__ é o nome do módulo atual.
+
+Se você roda "python principal.py", e __name__ é chamada desse arquivo 
+principal, ela vale __main__.
+
+Mas se __name__ é obtida de um arquivo importado de modulo xpto.py, então seu
+valor é o nome do módulo importado (xpto).
+
+No Flask, usamos o seguinte código para criar uma aplicação a partir do arquivo
+atual (que deve ser referenciado como __main__ na aplicação):
+    app = Flask(__name__)
+
+
+Para cada rota na aplicação, use a anotação app.route e coloque como parâmetro
+o path precedido de uma barra ("/exemplo"):
+    @app.route("/inicio")
+    def metodo():
+        return "<b>Código HTML</b>."
+
+Para rodar a aplicação, primeiro atribua à variável de ambiente FLASK_APP o 
+nome do arquivo que vai conter as configurações da aplicação e depois 
+execute o comando flask run:
+    $Env:FLASK_APP=jogoteca.py
+    flask run --port 8080
