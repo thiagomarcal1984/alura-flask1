@@ -22,3 +22,19 @@ nome do arquivo que vai conter as configurações da aplicação e depois
 execute o comando flask run:
     $Env:FLASK_APP=jogoteca.py
     flask run --port 8080
+
+Existem mais formas de definir ou restringir versões a serem instaladas no seu
+ambiente com pip. Vamos ver alguns exemplos:
+
+~=:     versão compatível - pode ser qualquer versão mais atual que não quebre
+        compatibilidade com a definida.
+==:     versão exata - define uma versão fixa que deve ser instalada.
+!=:     exclusão de versão - define a versão que não é para instalar, 
+        pegando assim a mais atual sem ser a definida.
+<=, >=: versão maior ou igual e menor ou igual - ajuda a restringir 
+        versões, inclusive a definida.
+<, >:   versão maior ou menor - ajuda a restringir versões, excluindo 
+        a definida.
+
+Por exemplo: em requirements.txt definimos a versão 2.0.2 do Flask com ~=.
+Assim, a versão mais recente que é compatível com a 2.0.2 é a 2.0.3.
