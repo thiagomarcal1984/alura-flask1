@@ -92,3 +92,5 @@ Assim como o request, o objeto redirect é um objeto que pode ser importado da
 biblioteca Flask.
 
 No Flask, arquivos estáticos são guardados na pasta ./static.
+
+A sintaxe de extensão de templates do Flask é semelhante a do Django.
