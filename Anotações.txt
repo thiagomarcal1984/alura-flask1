@@ -52,3 +52,10 @@ A diretiva para loop for no Flask é:
     {% for obj in items %}
         <p>{{ obj.valor }}</p>
     {% endfor %}
+
+Padrão de criação de uma classe com construtor em Python:
+    class Classe:
+        def __init__(self, parm1, parm2, parm3):
+            self.parm1 = parm1
+            self.parm2 = parm2
+            self.parm3 = parm3
