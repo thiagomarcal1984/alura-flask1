@@ -20,7 +20,7 @@ o path precedido de uma barra ("/exemplo"):
 Para rodar a aplicação, primeiro atribua à variável de ambiente FLASK_APP o 
 nome do arquivo que vai conter as configurações da aplicação e depois 
 execute o comando flask run:
-    $Env:FLASK_APP=jogoteca.py
+    $Env:FLASK_APP="jogoteca.py"
     flask run --port 8080
 
 Existem mais formas de definir ou restringir versões a serem instaladas no seu
@@ -68,3 +68,19 @@ A lista de jogos foi removida do método início, e foi passada para um
 escopo global.
 
 O método POST não é permitido no Flask por padrão. Como resolver?
+
+Basta fornecer para @app.route o array com os métodos permitidos para a rota:
+    @app.route('/rota', methods=['POST', 'GET'])
+        def rota():
+            # Processamento da requisição
+            return render_template("path_do_template")
+
+
+Para evitar os reloads manuais no ambiente de desenvolvimento, basta ligar o 
+debug mode no arquivo da aplicação Flask:
+    if __name__ == '__main__':
+        app.run(host='0.0.0.0', port=5000, debug=True)
+
+Para habilitar o debug mode no comando "flask run", defina a variável de 
+ambiente FLASK_ENV para development:
+    $Env:FLASK_ENV="development"

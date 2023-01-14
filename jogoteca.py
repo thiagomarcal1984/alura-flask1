@@ -14,15 +14,15 @@ jogo3 = Jogo('Mortal Kombat', 'Luta', 'PS2')
 
 lista = [ jogo1, jogo2, jogo3]
 
-@app.route("/inicio")
-def ola():
+@app.route("/")
+def index():
     return render_template("lista.html", titulo="Jogos", jogos=lista)
 
 @app.route('/novo')
 def novo():
     return render_template('novo.html', titulo="Novo Jogo")
 
-@app.route('/criar')
+@app.route('/criar', methods=['POST'])
 def criar():
     nome = request.form['nome']
     categoria = request.form['categoria']
@@ -33,7 +33,7 @@ def criar():
 
 # A aplicação roda a partir do comando: python <nome_do_arquivo>.py.
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8080)
+    app.run(host='0.0.0.0', port=5000, debug=True)
 
 # Para usar "flask run", defina a variável de ambiente FLASK_APP 
 # para o nome do arquivo: ($Env:FLASK_APP=<file>.py ; flask run --port 80).
