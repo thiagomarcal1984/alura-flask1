@@ -38,3 +38,6 @@ ambiente com pip. Vamos ver alguns exemplos:
 
 Por exemplo: em requirements.txt definimos a versão 2.0.2 do Flask com ~=.
 Assim, a versão mais recente que é compatível com a 2.0.2 é a 2.0.3.
+
+O método render_template, por padrão, busca os arquivos HTML a partir da pasta
+templates.
