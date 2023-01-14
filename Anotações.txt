@@ -47,3 +47,8 @@ para o método render_template:
     @app.route("/rota1")
     def rota1():
         return render_template("arquivo.html", parm1="Um", parm2="Dois")
+
+A diretiva para loop for no Flask é:
+    {% for obj in items %}
+        <p>{{ obj.valor }}</p>
+    {% endfor %}
