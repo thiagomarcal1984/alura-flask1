@@ -94,3 +94,13 @@ biblioteca Flask.
 No Flask, arquivos estáticos são guardados na pasta ./static.
 
 A sintaxe de extensão de templates do Flask é semelhante a do Django.
+
+Para importar dinamicamente conteúdo estático, use o seguinte comando dentro
+do HTML dos templates:
+    <link 
+        rel="stylesheet"
+        href="{{ url_for('static', filename='bootstrap.css') }}"
+    >
+
+O primeiro parâmetro da função url_for é um endpoint ("alias" de um caminho), 
+enquanto o parâmetro nomeado filename se refere ao arquivo procurado.
