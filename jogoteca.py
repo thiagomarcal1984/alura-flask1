@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 
 app = Flask(__name__) 
 
@@ -29,7 +29,7 @@ def criar():
     console = request.form['console']
     jogo = Jogo(nome, categoria, console)
     lista.append(jogo)
-    return render_template('lista.html', titulo="Jogos", jogos=lista)
+    return redirect("/")
 
 # A aplicação roda a partir do comando: python <nome_do_arquivo>.py.
 if __name__ == '__main__':

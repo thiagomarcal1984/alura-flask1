@@ -84,3 +84,9 @@ debug mode no arquivo da aplicação Flask:
 Para habilitar o debug mode no comando "flask run", defina a variável de 
 ambiente FLASK_ENV para development:
     $Env:FLASK_ENV="development"
+
+Tratamentos de mensagens POST devem REDIRECIONAR a resposta para outra rota.
+Isso impede aquela mensagem perguntando se você deseja repetir a postagem.
+
+Assim como o request, o objeto redirect é um objeto que pode ser importado da
+biblioteca Flask.
