@@ -41,3 +41,9 @@ Assim, a versão mais recente que é compatível com a 2.0.2 é a 2.0.3.
 
 O método render_template, por padrão, busca os arquivos HTML a partir da pasta
 templates.
+
+Para enviar parâmetros para os templates, basta inserir parâmetros nomeados 
+para o método render_template:
+    @app.route("/rota1")
+    def rota1():
+        return render_template("arquivo.html", parm1="Um", parm2="Dois")

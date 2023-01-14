@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route("/inicio")
 def ola():
-    return render_template("lista.html")
+    return render_template("lista.html", titulo="Jogos")
 
 
 # A aplicação roda a partir do comando: python <nome_do_arquivo>.py.
