@@ -1,4 +1,12 @@
-from flask import Flask, render_template, request, redirect, session, flash
+from flask import (
+    Flask,
+    render_template,
+    request,
+    redirect,
+    session,
+    flash,
+    url_for,
+)
 
 app = Flask(__name__) 
 
@@ -24,7 +32,7 @@ def index():
 @app.route('/novo')
 def novo():
     if 'usuario_logado' not in session or session['usuario_logado'] is None:
-        return redirect('/login?proxima=novo')
+        return redirect(url_for('login', proxima=url_for('novo')))
     return render_template('novo.html', titulo="Novo Jogo")
 
 @app.route('/criar', methods=['POST'])
@@ -34,7 +42,7 @@ def criar():
     console = request.form['console']
     jogo = Jogo(nome, categoria, console)
     lista.append(jogo)
-    return redirect("/")
+    return redirect(url_for('index'))
 
 @app.route('/login')
 def login():
@@ -51,16 +59,16 @@ def autenticar():
     if 'alohomora' == request.form['senha']:
         session['usuario_logado'] = request.form['usuario']
         flash(f"Usuário {session['usuario_logado']} logado com sucesso.")
-        return redirect(f"/{proxima}")
+        return redirect(proxima) # Redirecionar pra rota mesmo, não pra função.
     else:
         flash("Usuário não logado.")
-        return redirect(f"/login?proxima={proxima}")
+        return redirect(url_for('login', proxima=proxima))
 
 @app.route('/logout')
 def logout():
     session['usuario_logado'] = None
     flash('Logout efetuado com sucesso.')
-    return redirect("/")
+    return redirect(url_for('index'))
 
 # A aplicação roda a partir do comando: python <nome_do_arquivo>.py.
 if __name__ == '__main__':

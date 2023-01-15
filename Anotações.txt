@@ -130,3 +130,22 @@ O objeto request tem alguns dicionários:
     request.args    guarda os dados da URL (no caso, os parâmetros GET);
     request.values  guarda os dados da URL e da requisição POST;
     request.files   guarda os arquivos enviados via POST.
+
+A função url_for busca o nome da FUNÇÃO, e não da rota que a invoca!!!
+Exemplo:
+    @app.route("/caminho")
+    def funcao():
+        return "Minha rota."
+
+Para chamar este código, use:
+    url_for('funcao')
+    # Não use url_for('caminho').
+
+Usar o url_for para os redirecionamentos é uma boa prática, porque assim o
+path da rota pode mudar sem que o código sofra impactos.
+
+Você pode fornecer parâmetros para url_for, que servirão como query string:
+    url_for('login', proxima=url_for('novo'))
+    # retorna "/login?proxima=/novo"
+
+Se você for referenciar uma rota no HTML, prefira usar a função url_for.
