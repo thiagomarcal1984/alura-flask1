@@ -31,6 +31,17 @@ def criar():
     lista.append(jogo)
     return redirect("/")
 
+@app.route('/login')
+def login():
+    return render_template('login.html', titulo="Faça seu login")
+
+@app.route('/autenticar', methods=['POST'])
+def autenticar():
+    if 'alohomora' == request.form['senha']:
+        return redirect("/")
+    else:
+        return redirect("/login")
+
 # A aplicação roda a partir do comando: python <nome_do_arquivo>.py.
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000, debug=True)
