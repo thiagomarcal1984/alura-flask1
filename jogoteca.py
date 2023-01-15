@@ -13,17 +13,11 @@ app = Flask(__name__)
 # Você só pode escrever na sessão depois de definir a secret key.
 app.secret_key = 'alura' 
 
-class Jogo:
-    def __init__(self, nome, categoria, console):
-        self.nome = nome
-        self.categoria = categoria
-        self.console = console
+from jogos import Jogo
+lista = Jogo.todos()
 
-jogo1 = Jogo('Tetris', 'Puzzle', 'Atari')
-jogo2 = Jogo('God of War', 'Rack n Slash', 'PS2')
-jogo3 = Jogo('Mortal Kombat', 'Luta', 'PS2')
-
-lista = [ jogo1, jogo2, jogo3]
+from usuarios import Usuario
+usuarios = Usuario.todos()
 
 @app.route("/")
 def index():
@@ -56,9 +50,11 @@ def login():
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
     proxima = request.form.get('proxima')
-    if 'alohomora' == request.form['senha']:
-        session['usuario_logado'] = request.form['usuario']
-        flash(f"Usuário {session['usuario_logado']} logado com sucesso.")
+    if request.form['usuario'] in usuarios:
+        usuario = usuarios[request.form['usuario']]
+        if request.form['senha'] == usuario.senha:
+            session['usuario_logado'] = usuario.nickname
+            flash(f"Usuário {session['usuario_logado']} logado com sucesso.")
         return redirect(proxima) # Redirecionar pra rota mesmo, não pra função.
     else:
         flash("Usuário não logado.")
