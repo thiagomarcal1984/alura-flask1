@@ -1,6 +1,9 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session, flash
 
 app = Flask(__name__) 
+
+# Você só pode escrever na sessão depois de definir a secret key.
+app.secret_key = 'alura' 
 
 class Jogo:
     def __init__(self, nome, categoria, console):
@@ -38,8 +41,11 @@ def login():
 @app.route('/autenticar', methods=['POST'])
 def autenticar():
     if 'alohomora' == request.form['senha']:
+        session['usuario_logado'] = request.form['usuario']
+        flash(f"Usuário {session['usuario_logado']} logado com sucesso.")
         return redirect("/")
     else:
+        flash("Usuário não logado.")
         return redirect("/login")
 
 # A aplicação roda a partir do comando: python <nome_do_arquivo>.py.

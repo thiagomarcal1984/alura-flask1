@@ -104,3 +104,19 @@ do HTML dos templates:
 
 O primeiro parâmetro da função url_for é um endpoint ("alias" de um caminho), 
 enquanto o parâmetro nomeado filename se refere ao arquivo procurado.
+
+Para usar sessão no Flask, é necessário definir uma secret key para o app.
+
+As flash messages no Flask são criadas a partir do método flash, e elas são
+recuperadas no template com a seguinte sintaxe:
+    {% with messages = get_flashed_messages() %}
+        {% if messages%}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+    {% endwith %}
+
+A função get_flashed_messages recuperar as flash messages e depois as apaga.
