@@ -120,3 +120,13 @@ recuperadas no template com a seguinte sintaxe:
     {% endwith %}
 
 A função get_flashed_messages recuperar as flash messages e depois as apaga.
+
+A ideia de redirecionar após o login usando o parâmetro da URL consiste em usar
+um campo oculto que vai guardar esse parâmetro para depois ele ser postado na
+autenticação.
+
+O objeto request tem alguns dicionários:
+    request.forms   guarda os dados da requisição POST;
+    request.args    guarda os dados da URL (no caso, os parâmetros GET);
+    request.values  guarda os dados da URL e da requisição POST;
+    request.files   guarda os arquivos enviados via POST.

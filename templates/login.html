@@ -1,6 +1,7 @@
 {% extends "template.html" %} 
 {% block conteudo %}
     <form action="/autenticar" method="post">
+        <input type="hidden" name="proxima" value="{{ proxima }}" />
         <p>
             <label for="usuario">Nome de usuário:</label>
             <input 
